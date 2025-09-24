@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - CampusConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <div class="logo-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="brand-text">CampusConnect</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="recruiters.html" class="nav-link">Recruiters</a>
+                    
+                    <a href="profile.html" class="nav-link active">Profile</a>
+                    <a href="users.html" class="nav-link">Users</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="login-btn" onclick="openLoginModal()">Login</button>
+                    <button class="signup-btn" onclick="openSignUpModal()">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Profile Header -->
+            <section class="profile-header">
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="profile-details">
+                            <h1 class="profile-name">John Durairaj</h1>
+                            <p class="profile-title">Computer Science Student at Christ University</p>
+                            <p class="profile-joined">Joined August 2022</p>
+                        </div>
+                    </div>
+                    <button class="edit-profile-btn" onclick="openEditProfileModal()">Edit Profile</button>
+                </div>
+            </section>
+
+            <!-- Profile Navigation Tabs -->
+            <section class="profile-nav">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="about">About</button>
+                    <button class="tab-btn" data-tab="activity">Activity</button>
+                    <button class="tab-btn" data-tab="experience">Experience</button>
+                </div>
+            </section>
+
+            <!-- Profile Content -->
+            <section class="profile-content">
+                <!-- About Tab -->
+                <div class="tab-content active" id="about">
+                    <div class="info-section">
+                        <div class="info-row">
+                            <div class="info-item">
+                                <label>Location</label>
+                                <span>Bangalore, IN</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Industry</label>
+                                <span>Technology</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-item">
+                                <label>Contact</label>
+                                <span>8848743813</span>
+                            </div>
+                            <div class="info-item">
+                                <label>Email</label>
+                                <span>john.durairaj@example.edu</span>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <div class="info-item">
+                                <label>Website</label>
+                                <span>jd.portfolio.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Section -->
+                    <div class="section">
+                        <h2 class="section-title">Education</h2>
+                        <div class="education-item">
+                            <div class="education-info">
+                                <label>Degree</label>
+                                <span>Bachelor of Technology</span>
+                            </div>
+                            <div class="education-details">
+                                <label>Major</label>
+                                <span>Computer Science</span>
+                            </div>
+                        </div>
+                        <div class="education-item">
+                            <div class="education-info">
+                                <label>GPA</label>
+                                <span>3.8</span>
+                            </div>
+                            <div class="education-details">
+                                <label>Graduation Date</label>
+                                <span>May 2025</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="section">
+                        <h2 class="section-title">Skills</h2>
+                        <div class="skills-container">
+                            <div class="skill-tag">Java</div>
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">Data Structures</div>
+                            <div class="skill-tag">Algorithms</div>
+                            <div class="skill-tag">Machine Learning</div>
+                            <div class="skill-tag">Software Development</div>
+                        </div>
+                    </div>
+
+                    <!-- Resume Section -->
+                    <div class="section">
+                        <h2 class="section-title">Resume</h2>
+                        <button class="upload-resume-btn">Upload Resume</button>
+                    </div>
+                </div>
+
+                <!-- Activity Tab -->
+                <div class="tab-content" id="activity">
+                    <div class="activity-placeholder">
+                        <h3>Activity Feed</h3>
+                        <p>Your recent activity will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Tab -->
+                <div class="tab-content" id="experience">
+                    <div class="experience-placeholder">
+                        <h3>Work Experience</h3>
+                        <p>Your work experience and internships will appear here.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Sign Up</h2>
+                <span class="close" onclick="closeSignUpModal()">&times;</span>
+            </div>
+            <form id="signUpForm" class="application-form">
+                <div class="form-section">
+                    <h3>Account Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupFullName">Full Name *</label>
+                            <input type="text" id="signupFullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupEmail">Email *</label>
+                            <input type="email" id="signupEmail" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupPassword">Password *</label>
+                            <input type="password" id="signupPassword" name="password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupConfirmPassword">Confirm Password *</label>
+                            <input type="password" id="signupConfirmPassword" name="confirmPassword" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupPhone">Phone Number *</label>
+                            <input type="tel" id="signupPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupDegree">Degree *</label>
+                            <select id="signupDegree" name="degree" required>
+                                <option value="">Select Degree</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="B.E">B.E</option>
+                                <option value="B.Sc">B.Sc</option>
+                                <option value="B.Com">B.Com</option>
+                                <option value="BBA">BBA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="M.Tech">M.Tech</option>
+                                <option value="MBA">MBA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="signupCollege">College/University *</label>
+                            <input type="text" id="signupCollege" name="college" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signupGraduationYear">Year of Graduation *</label>
+                            <select id="signupGraduationYear" name="graduationYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupGpa">GPA/CGPA *</label>
+                        <input type="number" id="signupGpa" name="gpa" step="0.01" min="0" max="10" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeSignUpModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login</h2>
+                <span class="close" onclick="closeLoginModal()">&times;</span>
+            </div>
+            <form id="loginForm" class="application-form">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="loginEmail">Email *</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password *</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeLoginModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Login</button>
+                </div>
+                <div style="text-align: center; margin-top: 16px;">
+                    <p style="color: #9CA3AF; font-size: 14px;">
+                        Don't have an account? 
+                        <a href="#" onclick="closeLoginModal(); openSignUpModal();" style="color: #3B82F6; text-decoration: none;">Sign up here</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <span class="close" onclick="closeEditProfileModal()">&times;</span>
+            </div>
+            <form id="editProfileForm" class="application-form">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editFullName">Full Name *</label>
+                            <input type="text" id="editFullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">Email *</label>
+                            <input type="email" id="editEmail" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editPhone">Phone Number *</label>
+                            <input type="tel" id="editPhone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDegree">Degree *</label>
+                            <select id="editDegree" name="degree" required>
+                                <option value="">Select Degree</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="B.E">B.E</option>
+                                <option value="B.Sc">B.Sc</option>
+                                <option value="B.Com">B.Com</option>
+                                <option value="BBA">BBA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="M.Tech">M.Tech</option>
+                                <option value="MBA">MBA</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editCollege">College/University *</label>
+                            <input type="text" id="editCollege" name="college" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editGraduationYear">Year of Graduation *</label>
+                            <select id="editGraduationYear" name="graduationYear" required>
+                                <option value="">Select Year</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                                <option value="2026">2026</option>
+                                <option value="2027">2027</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGpa">GPA/CGPA *</label>
+                        <input type="number" id="editGpa" name="gpa" step="0.01" min="0" max="10" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Technical Skills</h3>
+                    <div class="form-group">
+                        <label for="editLanguages">Programming Languages Known</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="editLanguages" value="Java"> Java</label>
+                            <label><input type="checkbox" name="editLanguages" value="Python"> Python</label>
+                            <label><input type="checkbox" name="editLanguages" value="C++"> C++</label>
+                            <label><input type="checkbox" name="editLanguages" value="JavaScript"> JavaScript</label>
+                            <label><input type="checkbox" name="editLanguages" value="HTML/CSS"> HTML/CSS</label>
+                            <label><input type="checkbox" name="editLanguages" value="SQL"> SQL</label>
+                            <label><input type="checkbox" name="editLanguages" value="R"> R</label>
+                            <label><input type="checkbox" name="editLanguages" value="C#"> C#</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSkills">Additional Skills</label>
+                        <textarea id="editSkills" name="skills" placeholder="Mention any additional skills, certifications, or achievements..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Experience & Projects</h3>
+                    <div class="form-group">
+                        <label for="editExperience">Previous Experience (if any)</label>
+                        <textarea id="editExperience" name="experience" placeholder="Describe any internships, projects, or work experience..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="editProjects">Notable Projects</label>
+                        <textarea id="editProjects" name="projects" placeholder="Describe any significant projects you've worked on..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeEditProfileModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

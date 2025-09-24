@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruiters - CampusConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <div class="logo-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <span class="brand-text">CampusConnect</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="recruiters.html" class="nav-link active">Recruiters</a>
+                    <a href="applications.html" class="nav-link">Application</a>
+                   
+                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="users.html" class="nav-link">Users</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="login-btn" onclick="openLoginModal()">Login</button>
+                    <button class="signup-btn" onclick="openSignUpModal()">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Recruiters</h1>
+                <p class="page-description">Explore opportunities with leading companies.</p>
+            </div>
+
+            <!-- Companies Grid -->
+            <div class="companies-grid">
+                <!-- Row 1 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle1.png" alt="HCLTech Inc.">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.hcltech.com/">HCLTech Inc.</a>
+                          </h3>
+                          
+                        <p class="company-description">HCLTech Inc. is a leading software development company specializing in innovative solutions for various industries.</p>
+                        <p class="company-requirements">Minimum GPA: 3.5, Percentage: 70%, Languages: Java, Python, Skills: Problem Solving, Communication</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle2.jpg">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.accenture.com/">Accenture Ltd.</a>
+                          </h3>
+                          
+                        <p class="company-description">Accenture Ltd. is a multinational corporation offering a wide range of services, including consulting, technology, and outsourcing.</p>
+                        <p class="company-requirements">Minimum GPA: 3.2, Percentage: 65%, Languages: C++, Java, Skills: Teamwork, Analytical Thinking</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle3.jpg">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.infosys.com/">Infosys Co.</a>
+                          </h3>
+                          
+                        <p class="company-description">Infosys Co. is a design and marketing agency known for its creative campaigns and brand strategies.</p>
+                        <p class="company-requirements">Minimum GPA: 3.0, Percentage: 60%, Languages: JavaScript, HTML, CSS, Skills: Creativity, Design Thinking</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="datadynamics.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.datadynamics.com/">Data Dynamics Corp.</a>
+                          </h3>
+                          
+                        <p class="company-description">Data Dynamics Corp. is a data analytics firm providing insights and solutions to businesses across different sectors.</p>
+                        <p class="company-requirements">Minimum GPA: 3.6, Percentage: 75%, Languages: Python, R, Skills: Data Analysis, Machine Learning</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle4.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.ibm.com/">IBM Inc.</a>
+                          </h3>
+                          
+                        <p class="company-description">IBM Inc. is a technology company focused on developing cutting-edge systems and platforms for the future.</p>
+                        <p class="company-requirements">Minimum GPA: 3.4, Percentage: 70%, Languages: C++, Java, Skills: System Design, Algorithms</p>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle7.jpg">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.wipro.com/">Wipro Technologies</a>
+                          </h3>
+                          
+                        <p class="company-description">Wipro Technologies is a startup specializing in emerging technologies such as AI, blockchain, and IoT.</p>
+                        <p class="company-requirements">Minimum GPA: 3.3, Percentage: 68%, Languages: Python, JavaScript, Skills: AI, Blockchain, IoT</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="download.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.innovatesolutionscorp.com/">Innovate Solutions Corp.</a>
+                          </h3>
+                          
+                        <p class="company-description">Innovate Solutions Corp. focuses on creating innovative software solutions for various industries.</p>
+                        <p class="company-requirements">Minimum GPA: 3.4, Percentage: 70%, Languages: Java, C#, Skills: Agile Development, Problem Solving</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle6.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.cisco.com/">Cisco Ltd.</a>
+                          </h3>
+                          
+                        <p class="company-description">Cisco Ltd. provides strategic technology consulting and system integration services.</p>
+                        <p class="company-requirements">Minimum GPA: 3.3, Percentage: 68%, Languages: C++, Python, Skills: System Architecture, Strategic Planning</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle7.jpg">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.oracle.com/">Oracle Group</a>
+                          </h3>
+                          
+                        <p class="company-description">Oracle Group specializes in digital design and user experience solutions.</p>
+                        <p class="company-requirements">Minimum GPA: 3.2, Percentage: 65%, Languages: JavaScript, HTML, CSS, Skills: UI/UX Design, Visual Communication</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle8.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.cognizant.com/">Cognizant Inc.</a>
+                          </h3>
+                          
+                        <p class="company-description">Cognizant Inc. offers data analytics and business intelligence services.</p>
+                        <p class="company-requirements">Minimum GPA: 3.5, Percentage: 72%, Languages: Python, SQL, Skills: Data Visualization, Statistical Analysis</p>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="download1.png"
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.advancedtechsystems.com/">Advanced Tech Systems</a>
+                          </h3>
+                          
+                        <p class="company-description">Advanced Tech Systems develops advanced technology solutions for complex problems.</p>
+                        <p class="company-requirements">Minimum GPA: 3.6, Percentage: 75%, Languages: C++, Java, Skills: Embedded Systems, Real-time Programming</p>
+                    </div>
+                </div>
+
+                <div class="company-card">
+                    <div class="company-logo">
+                        <img src="Rectangle 9.png">
+                    </div>
+                    <div class="company-info">
+                        <h3 class="company-name">
+                            <a href="https://www.tcs.com/">TCS Solutions</a>
+                          </h3>
+                          
+                        <p class="company-description">TCS Solutions focuses on providing solutions in emerging technology areas.</p>
+                        <p class="company-requirements">Minimum GPA: 3.3, Percentage: 67%, Languages: Python, JavaScript, Skills: Machine Learning, AI Development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

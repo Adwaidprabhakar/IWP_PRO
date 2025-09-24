@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - CampusConnect</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <script defer>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const list = document.getElementById('usersList');
+            try {
+                const res = await fetch('http://localhost:4000/api/users');
+                const users = await res.json();
+                users.forEach(u => {
+                    const li = document.createElement('li');
+                    li.className = 'user-item';
+                    li.innerHTML = `<strong>${u.fullName}</strong> — ${u.email} — ${u.degree || ''} ${u.graduationYear || ''}`;
+                    list.appendChild(li);
+                });
+            } catch (e) {
+                const li = document.createElement('li');
+                li.textContent = 'Failed to load users. Make sure the server is running.';
+                list.appendChild(li);
+            }
+        });
+    </script>
+    <style>
+        .users-container { padding: 20px 0; }
+        .users-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+        .user-item { background: #1A1F2A; border: 1px solid #334455; border-radius: 6px; padding: 12px; color: #D1D5DB; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="recruiters.html" class="nav-link">Recruiters</a>
+                    <a href="applications.html" class="nav-link">Applications</a>
+                
+                    
+                    <a href="profile.html" class="nav-link">Profile</a>
+                    <a href="users.html" class="nav-link active">Users</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="login-btn" onclick="openLoginModal()">Login</button>
+                    <button class="signup-btn" onclick="openSignUpModal()">Sign Up</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="users-container">
+                <h1 class="page-title">Users</h1>
+                <ul id="usersList" class="users-list"></ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+

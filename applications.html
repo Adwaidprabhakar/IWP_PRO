@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Applications - Tech Careers</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="recruiters.html" class="nav-link">Recruiters</a>
+          <a href="applications.html" class="nav-link">Applications</a>
+         
+          
+          <a href="profile.html" class="nav-link">Profile</a>
+          <a href="users.html" class="nav-link">Users</a>
+        </div>
+        <div class="nav-actions">
+          <button class="login-btn" onclick="openLoginModal()">Login</button>
+          <button class="signup-btn" onclick="openSignUpModal()">Sign Up</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <h1 class="page-title">Companies Open for Applications</h1>
+      <div id="companies" class="companies-list"></div>
+
+      <!-- Application Form Modal -->
+      <div id="applicationModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <h2>Apply to <span id="modalCompanyName"></span></h2>
+          <form id="applicationForm" class="form">
+            <label>Name: <input type="text" name="name" required /></label><br>
+            <label>Email: <input type="email" name="email" required /></label><br>
+            <label>Years of Experience: <input type="number" name="experience" min="0" required /></label><br>
+            <label>Primary Programming Language: <input type="text" name="language" required /></label><br>
+            <label>Preferred Location: <input type="text" name="location" required /></label><br>
+            <label>Why do you want this job? <textarea name="reason" rows="3" required></textarea></label><br>
+            <button type="submit" class="btn btn-primary">Submit Application</button><br>
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+          </form>
+          <div id="applicationResult" class="result-message"></div>
+        </div>
+      </div>
+
+      <section>
+        <h2>Your Applications</h2>
+        <ul id="applicationsList" class="applications-list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const companies = [
+      { name: "TechCorp Solutions", details: "Innovative software development firm." },
+      { name: "NextGen IT", details: "Leading cloud infrastructure provider." },
+      { name: "DataWorks", details: "Big data and analytics company." },
+      { name: "CyberSecure", details: "Cybersecurity specialists." },
+      { name: "AI Innovations", details: "Cutting-edge AI research lab." }
+    ];
+
+    let nextAccept = true; // alternate accept/reject
+
+    function renderCompanies() {
+      const container = document.getElementById("companies");
+      container.innerHTML = "";
+      companies.forEach(c => {
+        const div = document.createElement("div");
+        div.className = "company-block";
+        div.innerHTML = `
+          <h3>${c.name}</h3>
+          <p>${c.details}</p>
+          <button class="btn btn-primary" onclick="openApplicationModal('${c.name}')">Apply</button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function openApplicationModal(company) {
+      document.getElementById("modalCompanyName").textContent = company;
+      document.getElementById("applicationModal").style.display = "block";
+      const form = document.getElementById("applicationForm");
+      form.reset();
+      form.company = company;
+      document.getElementById("applicationResult").textContent = "";
+    }
+
+    function closeModal() {
+      document.getElementById("applicationModal").style.display = "none";
+    }
+
+    function generateInterviewDateIST() {
+      const now = new Date();
+      const daysAhead = Math.floor(Math.random() * 9) + 1;
+      const interviewDate = new Date(now.getTime() + daysAhead * 24 * 60 * 60 * 1000);
+      const hour = Math.floor(Math.random() * 10) + 9;
+      interviewDate.setHours(hour);
+      interviewDate.setMinutes(Math.floor(Math.random() * 60));
+      interviewDate.setSeconds(0);
+      interviewDate.setMilliseconds(0);
+
+      const istOffset = 5 * 60 + 30;
+      const istDate = new Date(interviewDate.getTime() + istOffset * 60 * 1000);
+      return istDate.toLocaleString("en-IN", { hour12: true });
+    }
+
+    document.getElementById("applicationForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.target;
+      const company = form.company;
+      const applicationsList = document.getElementById("applicationsList");
+      const resultDiv = document.getElementById("applicationResult");
+
+      if (nextAccept) {
+        const interviewDate = generateInterviewDateIST();
+        const li = document.createElement("li");
+        li.textContent = `${company} - Interview Scheduled on ${interviewDate}`;
+        applicationsList.appendChild(li);
+        resultDiv.textContent = `Application accepted! Interview scheduled on ${interviewDate}.`;
+      } else {
+        resultDiv.textContent = "Application rejected. Suggestions: improve your coding skills, resume, and interview preparation.";
+      }
+      nextAccept = !nextAccept;
+      setTimeout(() => {
+        resultDiv.textContent = "";
+        closeModal();
+      }, 4000);
+    });
+
+    window.onload = renderCompanies;
+  </script>
+</body>
+</html>
